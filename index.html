@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <title>NicheForge v3 — AI Web Studio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial Black' font-weight='900' font-size='18' fill='white'%3ENF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Syne+Mono&family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide&family=Oxanium:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -274,6 +275,7 @@
   .panel { display: none; }
   .panel.active { display: block; animation: fadeIn 0.18s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  #panel-builder { max-width:1100px; margin:0 auto; }
 
   /* ===== DASHBOARD PANEL ===== */
   .stats-row {
@@ -4073,7 +4075,7 @@
           </div>
           <div id="railway-badge" style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(255,85,85,0.12);color:var(--accent3)">NOT SET</div>
         </div>
-        <input type="text" id="set-railway-url" placeholder="https://nicheforge-backend-production.up.railway.app" style="font-family:'Courier New',monospace;font-size:11px;width:100%" oninput="saveRailwayUrl()">
+        <input type="text" id="set-railway-url" placeholder="https://nicheforge-production.up.railway.app" style="font-family:'Courier New',monospace;font-size:11px;width:100%" oninput="saveRailwayUrl()">
         <div id="railway-test-result" style="font-size:11px;margin-top:8px;display:none"></div>
         <button class="btn btn-ghost" onclick="testRailwayConnection()" style="margin-top:10px;font-size:12px;width:100%">🔌 Test Backend</button>
       </div>
@@ -4483,7 +4485,7 @@
       <!-- ══════════════════════════════════════════════════════════
            CINEMATIC HERO — Full-width mode selector
            ══════════════════════════════════════════════════════════ -->
-      <div id="builder-hero" style="text-align:center;margin-bottom:36px">
+      <div id="builder-hero" style="text-align:center;margin-bottom:36px;padding-top:8px">
         <div class="section-label" style="justify-content:center;margin-bottom:10px">AI Website Builder</div>
         <h1 style="font-family:var(--font-heading);font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1px;margin-bottom:10px;line-height:1.1">
           Build Any Site.<br><span style="background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent">4 Powerful Ways.</span>
@@ -4492,7 +4494,7 @@
       </div>
 
       <!-- ── MODE CARDS (big clickable cards like app icons) ── -->
-      <div id="builder-mode-cards" id="builder-mode-cards">
+      <div id="builder-mode-cards">
 
         <div class="bmode-card active" onclick="switchBuilderMode('prompt',this)" data-mode="prompt">
           <div class="bmode-card-icon">
@@ -4568,12 +4570,17 @@
                 <select class="arena-select" id="b-lang">
                   <option value="English">🇬🇧 English</option><option value="Spanish">🇪🇸 Spanish</option>
                   <option value="French">🇫🇷 French</option><option value="German">🇩🇪 German</option>
-                  <option value="Arabic">🇸🇦 Arabic</option><option value="Hindi">🇮🇳 Hindi</option>
-                  <option value="Urdu">🇵🇰 Urdu</option><option value="Portuguese">🇧🇷 Portuguese</option>
+                  <option value="Arabic">🇸🇦 Arabic (RTL)</option><option value="Urdu">🇵🇰 Urdu (RTL)</option>
+                  <option value="Hebrew">🇮🇱 Hebrew (RTL)</option><option value="Persian">🇮🇷 Persian (RTL)</option>
+                  <option value="Hindi">🇮🇳 Hindi</option><option value="Portuguese">🇧🇷 Portuguese</option>
                   <option value="Chinese">🇨🇳 Chinese</option><option value="Japanese">🇯🇵 Japanese</option>
+                  <option value="Turkish">🇹🇷 Turkish</option><option value="Russian">🇷🇺 Russian</option>
+                  <option value="Multilingual (EN+AR)">🌐 Multilingual EN+AR (RTL)</option>
+                  <option value="Multilingual (EN+UR)">🌐 Multilingual EN+UR (RTL)</option>
+                  <option value="Multilingual (EN+FR)">🌐 Multilingual EN+FR</option>
                 </select>
                 <select class="arena-select" id="b-engine">
-                  <option value="claude">Claude Sonnet 4.5</option>
+                  <option value="claude">Claude Sonnet 4.6</option>
                   <option value="openai">GPT-4o</option>
                   <option value="gemini">Gemini Flash (Free)</option>
                 </select>
@@ -4633,8 +4640,10 @@
                   <option>Luxury High-End</option>
                 </select>
                 <select class="arena-select" id="b-url-lang" style="border-color:rgba(180,79,255,0.2)">
-                  <option>English</option><option>Spanish</option><option>French</option>
-                  <option>Arabic</option><option>Urdu</option><option>Hindi</option>
+                  <option>English</option><option>Spanish</option><option>French</option><option>German</option>
+                  <option>Arabic (RTL)</option><option>Urdu (RTL)</option><option>Hebrew (RTL)</option><option>Persian (RTL)</option>
+                  <option>Hindi</option><option>Portuguese</option><option>Turkish</option><option>Russian</option>
+                  <option>Multilingual (EN+AR)</option><option>Multilingual (EN+UR)</option>
                 </select>
               </div>
 
@@ -4692,7 +4701,7 @@
               </button>
 
               <div style="text-align:center;margin-top:10px;font-size:11px;color:rgba(255,85,128,0.5)">
-                Powered by GPT-4o Vision + Claude Sonnet 4.5
+                Powered by GPT-4o Vision + Claude Sonnet 4.6
               </div>
             </div>
           </div>
@@ -4714,8 +4723,10 @@
               <div class="arena-options-row">
                 <input type="text" id="b-tmpl-brand" class="arena-select" placeholder="Your brand name...">
                 <select class="arena-select" id="b-tmpl-lang">
-                  <option>English</option><option>Spanish</option><option>French</option>
-                  <option>Arabic</option><option>Urdu</option><option>Hindi</option>
+                  <option>English</option><option>Spanish</option><option>French</option><option>German</option>
+                  <option>Arabic (RTL)</option><option>Urdu (RTL)</option><option>Hebrew (RTL)</option><option>Persian (RTL)</option>
+                  <option>Hindi</option><option>Portuguese</option><option>Turkish</option><option>Russian</option>
+                  <option>Multilingual (EN+AR)</option><option>Multilingual (EN+UR)</option>
                 </select>
               </div>
 
@@ -7360,8 +7371,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function requireApiKey(callerName) {
-    if (!getApiKey()) {
-      const msg = `API key not set.\n\nGo to Settings → paste your Google Gemini API key to use ${callerName}.\n\nGet a FREE key at: aistudio.google.com/app/apikey`;
+    if (!getApiKey() && !getClaudeKey()) {
+      const msg = `API key not set.\n\nGo to Settings and add either:\n• Google Gemini API key (FREE) — aistudio.google.com/app/apikey\n• Anthropic Claude API key — console.anthropic.com/settings/keys\n\nAt least one is required to use ${callerName}.`;
       alert(msg);
       showPanel('settings', document.getElementById('nav-settings'));
       return false;
@@ -7536,6 +7547,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const apiInput = document.getElementById('set-apikey');
     if (apiInput && storedKey) apiInput.value = storedKey;
     updateApiKeyBadge(storedKey);
+    // Auto-fill Gemini key if not already set
+    const BUILT_IN_GEMINI = 'AIzaSyCK_n5k7xOUSECapdSge1oPjExjZ8KTquk';
+    if (!storedKey) {
+      localStorage.setItem('nf_api_key', BUILT_IN_GEMINI);
+      if (apiInput) apiInput.value = BUILT_IN_GEMINI;
+      updateApiKeyBadge(BUILT_IN_GEMINI);
+    }
   });
   // ── Content Calendar ─────────────────────────────────────────
   let calPosts = JSON.parse(localStorage.getItem('nf_cal_posts') || '[]');
@@ -8926,36 +8944,39 @@ h1{font-size:2em;margin-bottom:0.5em}h2{font-size:1.4em;margin-top:1.5em}h3{font
 
   /* ── Mode cards grid ── */
   #builder-mode-cards {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-bottom:24px;
+    display:grid !important;
+    grid-template-columns:repeat(4,1fr) !important;
+    gap:12px;
+    margin-bottom:28px;
+    width:100%;
   }
-  @media(max-width:600px){
-    #builder-mode-cards { grid-template-columns:repeat(2,1fr); gap:8px; }
+  @media(max-width:700px){
+    #builder-mode-cards { grid-template-columns:repeat(2,1fr) !important; gap:8px; }
   }
 
   .bmode-card {
     position:relative;
-    padding:16px 10px;border-radius:14px;text-align:center;
+    padding:20px 12px 16px;border-radius:16px;text-align:center;
     background:var(--surface2);border:1.5px solid var(--border);
     cursor:pointer;transition:all 0.2s ease;
-    display:flex;flex-direction:column;align-items:center;gap:6px;
+    display:flex !important;flex-direction:column !important;align-items:center !important;gap:8px;
+    min-height:110px;justify-content:center;
   }
-  .bmode-card:active { transform:scale(0.97); }
+  .bmode-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
+  .bmode-card:active { transform:scale(0.97) translateY(0); }
   .bmode-card.active {
     background:rgba(0,212,255,0.06);
     border-color:rgba(0,212,255,0.45);
     box-shadow:0 0 20px rgba(0,212,255,0.1),0 4px 16px rgba(0,0,0,0.3);
   }
   .bmode-card-icon {
-    width:48px;height:48px;border-radius:12px;
+    width:52px;height:52px;border-radius:14px;
     background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.15);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--accent);flex-shrink:0;
+    display:flex !important;align-items:center !important;justify-content:center !important;
+    color:var(--accent);flex-shrink:0;margin-bottom:2px;
   }
   .bmode-card.active .bmode-card-icon { box-shadow:0 0 14px rgba(0,212,255,0.4); }
-  .bmode-card-label { font-family:var(--font-heading);font-size:12px;font-weight:700;color:var(--text);line-height:1.2; }
+  .bmode-card-label { font-family:var(--font-heading);font-size:13px;font-weight:700;color:var(--text);line-height:1.2; }
   .bmode-card-sub { font-size:10px;color:var(--muted);line-height:1.3; }
   .bmode-badge {
     position:absolute;top:-7px;right:-4px;
@@ -9386,6 +9407,11 @@ ${blogData.html}
     const lang = document.getElementById('b-lang')?.value || 'English';
     const color = document.getElementById('b-color')?.value || 'professional dark';
     const sections = [...document.querySelectorAll('#b-sections input:checked')].map(i=>i.value);
+    const isRTL = lang.includes('RTL') || ['Arabic','Urdu','Hebrew','Persian'].some(l=>lang.startsWith(l));
+    const isMulti = lang.includes('Multilingual');
+    const rtlNote = isRTL ? `\n- CRITICAL RTL: Add dir="rtl" to <html>, text-align:right on all text, flip flex layouts${isMulti ? ', include BOTH English AND translated text in each section' : ''}` : '';
+    const faviconLetter = encodeURIComponent((name || 'S').charAt(0).toUpperCase());
+    const faviconTag = `<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23333'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial Black' font-size='16' fill='white'%3E${faviconLetter}%3C/text%3E%3C/svg%3E">`;
 
     setGenProgress(20, 'Crafting your site...', 'AI writing HTML, CSS and content');
 
@@ -9415,6 +9441,7 @@ CRITICAL REQUIREMENTS:
 - Font: Use Google Fonts — pick appropriate fonts for the business type
 - Brand logo: text-based logo using business name with styled CSS
 - NEVER include placeholder images that require external URLs — use CSS gradient backgrounds instead
+- Add this favicon tag inside <head>: ${faviconTag}${rtlNote}
 - If language is not English, ALL text content must be in ${lang}
 
 Generate the complete HTML now:`;
@@ -9604,7 +9631,7 @@ Generate now:`;
           'anthropic-version':'2023-06-01',
           'anthropic-dangerous-direct-browser-access':'true'
         },
-        body:JSON.stringify({ model:'claude-sonnet-4-5', max_tokens:maxTokens||8000, messages:[{role:'user',content:prompt}] })
+        body:JSON.stringify({ model:'claude-sonnet-4-6', max_tokens:maxTokens||8000, messages:[{role:'user',content:prompt}] })
       });
       if(!r.ok){ const e=await r.json(); throw new Error('Claude error: '+(e.error?.message||r.status)); }
       const d = await r.json();
@@ -10584,7 +10611,7 @@ Return the complete updated HTML:`;
 
   // ── Railway Backend Config ───────────────────────────────────
   const RAILWAY_URL_KEY = 'nf_railway_url';
-  const DEFAULT_RAILWAY_URL = 'https://nicheforge-backend-production.up.railway.app';
+  const DEFAULT_RAILWAY_URL = 'https://nicheforge-production.up.railway.app';
 
   function getRailwayUrl() {
     return localStorage.getItem(RAILWAY_URL_KEY) || DEFAULT_RAILWAY_URL;
@@ -10937,7 +10964,7 @@ Return the complete updated HTML:`;
       const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-        body: JSON.stringify({ model: 'claude-sonnet-4-5', max_tokens: 4096, messages: [{ role: 'user', content: prompt }] })
+        body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 4096, messages: [{ role: 'user', content: prompt }] })
       });
       const data = await res.json();
       const html = data.content?.[0]?.text || '';
